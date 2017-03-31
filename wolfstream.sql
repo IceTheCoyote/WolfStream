@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 30, 2017 at 10:08 PM
+-- Generation Time: Mar 31, 2017 at 03:53 PM
 -- Server version: 5.6.34
 -- PHP Version: 5.5.38
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `wolfstream`
 --
+CREATE DATABASE IF NOT EXISTS `wolfstream` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `wolfstream`;
 
 -- --------------------------------------------------------
 
@@ -36,19 +38,17 @@ CREATE TABLE `accounts` (
   `banned` int(11) NOT NULL,
   `banreason` varchar(999) NOT NULL,
   `enablePicture` int(11) NOT NULL DEFAULT '0',
+  `enableYT` int(11) NOT NULL DEFAULT '0',
+  `YouTubeMusicPlayer` varchar(999) NOT NULL DEFAULT '5WEUKj7jAO0',
   `isLocked` int(11) NOT NULL DEFAULT '0',
   `profile_picture` varchar(999) NOT NULL DEFAULT 'http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png',
   `background_pg` varchar(999) NOT NULL DEFAULT 'http://pre10.deviantart.net/bbfa/th/pre/i/2015/102/6/b/ninetales_by_bluekomadori-d8pfbwl.jpg',
   `description` varchar(999) NOT NULL,
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 --
 -- Dumping data for table `accounts`
 --
-
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `reports`
@@ -61,9 +61,6 @@ CREATE TABLE `reports` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Indexes for dumped tables
---
 
 --
 -- Indexes for table `accounts`
