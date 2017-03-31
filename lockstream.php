@@ -54,21 +54,27 @@ function deleteAll($directory, $empty = false) {
 	$lock = mysql_escape_string(stripslashes($_POST['strmlock']));
 	
 	if($lock == 'yes') {
-		$updateLock = "UPDATE `wolfsttream`.`account` SET `isLocked` = 1 WHERE `stream_name = '$StreamIdentity'";
+		$updateLock = "UPDATE `wolfstream`.`accounts` SET `isLocked` = 1 WHERE `stream_name` = '$StreamIdentity'";
 		$e2 = mysql_query($updateLock, $c);
+		if(!$e2){
+			die(mysql_error());
+		}
 		
-		deleteAll("E:\RTMP_SERVER\www\/".$StreamIdentity."\/".$StreamKey);//Change this directory to your RTMP www server.
-		deleteAll("E:\RTMP_SERVER\www\/".$StreamIdentity);//Change this directory to your RTMP www server.
+		deleteAll("E:\RTMP_SERVER\www\/".$StreamIdentity."\/".$StreamKey);
+		deleteAll("E:\RTMP_SERVER\www\/".$StreamIdentity);
 		die("Successfully locked your stream. <a href='editstream.php'>Click</a> to go back to editing.");
 	}else{
 		if($banned == 1) {
 			die("Your account was suspended! Reasons why your account was banned $banreason.");
 		}
-		$updateLock = "UPDATE `wolfsttream`.`account` SET `isLocked` = 1 WHERE `stream_name = '$StreamIdentity'";
+		$updateLock = "UPDATE `wolfstream`.`accounts` SET `isLocked` = 1 WHERE `stream_name` = '$StreamIdentity'";
 		$e2 = mysql_query($updateLock, $c);
+		if(!$e2){
+			die(mysql_error());
+		}
 		
-		mkdir("E:\RTMP_SERVER\www\/".$StreamIdentity."\/".$StreamKey);//Change this directory to your RTMP www server.
-		mkdir("E:\RTMP_SERVER\www\/".$StreamIdentity);//Change this directory to your RTMP www server.
+		mkdir("E:\RTMP_SERVER\www\/".$StreamIdentity."\/".$StreamKey);
+		mkdir("E:\RTMP_SERVER\www\/".$StreamIdentity);
 		die("Successfully unlocked your stream. (WARNING: If someone has your stream key lock and change your stream key before unlocking.) <a href='editstream.php'>Click</a> to go back to editing,");
 	}
 	mysql_close($c);
