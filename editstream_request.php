@@ -56,7 +56,7 @@ session_start();
 $StreamIdentity = $_SESSION['StreamName'];
 $StreamKey = $_SESSION['StreamKey'];
 $StreamGame = $_SESSION['StreamGame'];
-$_SESSION['Password_PlainText'] = $_POST['strmpass'];
+$_SESSION['Password_PlainText'] = mysql_escape_string(stripslashes($_POST['strmpass']));
 
 $StreamID = mysql_escape_string(stripslashes($_POST['strmname']));
 $StreamGM = mysql_escape_string(stripslashes($_POST['strmgame']));
