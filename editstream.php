@@ -39,6 +39,7 @@ function Delete($path)
 		$background = "{$row['background_pg']}";
 		$desc = "{$row['description']}";
 		$prof = "{$row['profile_picture']}";
+		$stream_YouTube = "{$row['YouTubeMusicPlayer']}";
 	}
 	mysql_close($c);
 ?>
@@ -93,6 +94,14 @@ function Delete($path)
    <input type="radio" name="strmenable_picture" value="yes"> Yes, show my profile picture on my stream video.<br/>
    <input type="radio" name="strmenable_picture" value="no"> No, do not show my profile picture on my stream video.<br/>
    <input type="submit" name="changepicturesettings" value="Change profile picture status" />
+  </form>
+  <form action='settings_YT.php' method='POST'>
+   <p><b>Enabling your stream's youtube music</b> allows others to listen to the song you have put on.</p>
+   <input type="radio" name="strmenable_YT" value="yes"> Yes, allow others to listen to the songs I put on.<br/>
+   <input type="radio" name="strmenable_YT" value="no"> No, I rather just stream the music I have on my LIVE Stream.<br/>
+   <input type="radio" name="strmenable_YT" value="justchange"> No, but I would rather change the video I put on.<br/>
+   YouTube ID (e.x: 5WEUKj7jAO0): <input type="text" name="strmYT" value="<?php echo $stream_YouTube; ?>" /><br/>
+   <input type="submit" name="changeYTsettings" value="Change YouTube Status" />
   </form>
   <b>WARNING: Do not show anyone your stream key at all! Anyone can stream onto your account and abuse it. This is your stream and only you can have access to.</b>
  </body>
