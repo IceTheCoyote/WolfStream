@@ -22,8 +22,8 @@ function deleteDirectory($dir) {
 	session_start();
 	
 	if(isset($_POST['login'])) {
-		$usr = $_POST['user'];
-		$psw = $_POST['pass'];
+		$usr = mysql_escape_string(stripslashes($_POST['user']));
+		$psw = mysql_escape_string(stripslashes($_POST['pass']));
 		
 		if($usr == $admin_username && $psw == $admin_password) {
 			$_SESSION['admin_login'] = "Logged in";
@@ -32,10 +32,10 @@ function deleteDirectory($dir) {
 		}
 	}
 	if(isset($_POST['execute'])) {
-		$command = $_POST['command_line'];
-		$user = $_POST['target_usr'];
-		$streamkey = $_POST['streamkey_targ'];
-		$reason = $_POST['reasons'];
+		$command = mysql_escape_string(stripslashes($_POST['command_line']));
+		$user = mysql_escape_string(stripslashes($_POST['target_usr']));
+		$streamkey = mysql_escape_string(stripslashes($_POST['streamkey_targ']));
+		$reason = mysql_escape_string(stripslashes($_POST['reasons']));
 		
 		if($command == 'ban') {
 			$ex_ban = "UPDATE `wolfstream`.`accounts` SET `banned` = 1, `banreason` = '$reason' WHERE `stream_name` = '$user'";
