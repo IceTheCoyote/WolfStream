@@ -122,40 +122,5 @@
   }
   
   ?>
-<html>
- <head>
-  <title>Wolf Stream Online RTMP Service</title>
- </head>
- <body onload='restrainIllegalOperation()' oncontextmenu="return false">
-  <img src="<?php echo $backg; ?>" style="position:fixed; width: 100%; height: 100%; top:0px; left:0px; z-index:-9999;" />
-  <center><b>Welcome streamers to your own stream.</b><br/>
-  <table border = '1' style = 'background-color: gray;'>
-   <tr>
-    <td><a href='index.php'><img src='img/button_home.png' /></a></td>
-    <td><?php if($StreamIdentity == ""){ echo "<a href='login.php'>Login</a>"; }else{echo "Welcome, $StreamIdentity";} ?></td>
-	<td><?php if($StreamIdentity == ""){ echo "<a href='register.php'>Register</a>"; }else{echo "Already Registered. <a href='logout.php'>Logout</a>";} ?></td>
-	<td><?php if($StreamIdentity == ""){ echo "---"; }else{echo "<a href='editstream.php'>Edit your stream account</a>";} ?></td>
-	<td><a href='tos.php'>Terms of Service</a></td>
-	<td><a href='privacy.php'>Privacy of Policy</a></td>
-	<td><a href='searchstream.php'>Search for a streamer</a></td>
-	<td><a href='howto.php'>How to stream in this service</a></td>
-	<td><a href='report.php'>Report a streamer</a></td>
-   </tr>
-  </table>
-  <br/><center/>
-  <?php 
-  
-  if(!$_SESSION['StreamPassword_'.$StreamName1]) {
-	  echo "<br/><b>This stream is private!</b><br/><form action='' method='POST'>Enter the streamer's password: <input type='password' name='strmpass' /><input type='submit' name='enterPASS' value='Enter password' /></form><center/>";
-  }else{
-	  echo '<b>Currently Streaming a game: '.$StreamGame2.'</b><br/>';
-	  echo '<object width="560" height="400"> <param name="movie" value="http://hosting-marketers.com/strobe/StrobeMediaPlayback.swf"></param><param name="flashvars" value="streamType=Live&autoPlay=false&scaleMode=letterbox&loop=true&backgroundColor=000000&optimizeBuffering=true&initialBufferTime=0.1&expandedBufferTime=10&minContinuousPlaybackTime=30&src=rtmp://server.twsicommunity.com/'.$StreamIdentity2.'/'.$StreamKey2.'"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://hosting-marketers.com/strobe/StrobeMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true"  width="560" height="400" flashvars="streamType=Live&autoPlay=false&scaleMode=letterbox&loop=true&backgroundColor=000000&optimizeBuffering=true&initialBufferTime=0.1&expandedBufferTime=10&minContinuousPlaybackTime=30&src=rtmp://server.twsicommunity.com/'.$StreamIdentity2.'/'.$StreamKey2.'"></embed></object><br/>
-	  <div style="opacity:0.8;"><p style="background-color: gray; border: 2px ridge black;">'.$desc.'</p></div>';
-	  if($enabledPicture == 1) {
-		  echo '<img src="'.$prof.'" style="position: fixed; width: 96px; height: 96px; top: 135px; left: 1110px; z-index:99999; opacity: 0.8;" />';
-	  }
-  }
-  
-  ?>
 	  </body>
-</html>
+	 </html>
